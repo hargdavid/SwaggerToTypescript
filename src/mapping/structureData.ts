@@ -1,17 +1,17 @@
-export const structureData = (data: unknown) => {
+import { DataType } from "../types/types";
+import { convertObjectToType } from "./objectToType";
+
+export const structureData = (data: unknown): string => {
   const dataKeys: string[] = Object.keys(data);
+  let returnString = "";
 
-  dataKeys.forEach((dataKey) => {
-    if (data[dataKey].type === "object") {
+  dataKeys.forEach((dataKey: string) => {
+    if (data[dataKey] && data[dataKey].type) {
+      if (data[dataKey].type === DataType.Object) {
+        returnString += convertObjectToType(dataKey, data[dataKey].properties);
+      }
     }
-    // check type "type"
-    // go into properties if object
-    // check keys in properties and check format
-    // check format
-    // check if enum exists in string
-    // ref should just be a type to another definition
-    // write to filename
-
-    console.log(`${dataKey}`, data[dataKey]);
   });
+
+  return returnString;
 };
