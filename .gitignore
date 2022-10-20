@@ -1,4 +1,4 @@
 /node_modules/*
 .env
 /mocks/**
-/backend/**
+/backend/*
