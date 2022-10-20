@@ -1,4 +1,5 @@
 import { capitalizeString } from "../helpers/capitalizeString";
+import { getTypeNameFromRef } from "../helpers/getTypeNameFromRef";
 import { PropertyElement, DataType } from "../types/types";
 
 /* 
@@ -87,11 +88,6 @@ const convertToArray = (name: string, element: PropertyElement) => {
   return `${name}: ${typeName}[];`;
 };
 
-const getTypeNameFromRef = (ref: string): string => {
-  const pathname = "definitions/";
-  return ref.substring(ref.indexOf(pathname) + pathname.length);
-};
-
 const convertToEnum = (
   typeName: string,
   name: string,
@@ -100,15 +96,16 @@ const convertToEnum = (
   const capitalizedName = capitalizeString(name);
   let formattedEnumVals = "";
 
-  enumArr.forEach(
-    (enumEl) =>
-      (formattedEnumVals += `
-  ${enumEl},`)
-  );
+  enumArr.forEach((enumEl, key) => {
+    if (key > 0) {
+      formattedEnumVals += ``;
+    }
+    formattedEnumVals += `
+  ${enumEl},`;
+  });
 
   return `export enum ${typeName}${capitalizedName}Enum {${formattedEnumVals}
 }
-
 `;
 };
 

@@ -1,4 +1,4 @@
 /node_modules/*
 .env
 /mocks/**
-/types/api/backend/*
+/backend/**

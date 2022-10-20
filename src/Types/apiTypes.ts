@@ -1,17 +1,17 @@
 import { ArrayObj, DataType, RefItem } from "./types";
 
 export type PathObj = {
-  get?: MethodType;
-  post?: MethodType;
-  delete?: MethodType;
-  patch?: MethodType;
-  put?: MethodType;
+  get?: MethodObj;
+  post?: MethodObj;
+  delete?: MethodObj;
+  patch?: MethodObj;
+  put?: MethodObj;
 };
 
-export type MethodType = {
+export type MethodObj = {
   tags: string[];
   parameters: Parameter[];
-  response: Map<string, ResponseObj>;
+  responses: Map<string, ResponseObj>;
 };
 
 export type Parameter = {
@@ -31,4 +31,12 @@ export type ResponseObj = {
 export enum ResponseCode {
   BadRequest = "400",
   Success = "200",
+}
+
+export enum MethodType {
+  GET = "get",
+  POST = "post",
+  DELETE = "delete",
+  PATCH = "patch",
+  PUT = "put",
 }

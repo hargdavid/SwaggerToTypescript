@@ -3,6 +3,7 @@ import { structureData } from "./mapping/structureData";
 import fs from "fs";
 import { swaggerJson } from "../mocks/swagger";
 import { createEndpoints } from "./mapping/createEndpoints";
+import emoji from "node-emoji";
 
 module.exports = async () => {
   //fetch data from swagger
@@ -41,5 +42,11 @@ module.exports = async () => {
   newWriteStream.write(structuredEndpoints);
   newWriteStream.end();
 
-  console.log("Done");
+  console.log(
+    `${emoji.get(
+      "white_check_mark"
+    )} Success: Created types and api endpoints to ${
+      process.env.OUTPUT_TYPES_FOLDER_PATH
+    }`
+  );
 };
